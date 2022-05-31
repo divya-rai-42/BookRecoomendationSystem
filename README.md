@@ -1,6 +1,6 @@
 Dataset taken from https://www.kaggle.com/datasets/arashnic/book-recommendation-dataset
 
-Steps to open the web app:
+**Steps to open the web app:
 
 Step1: Run the app.py file
 
