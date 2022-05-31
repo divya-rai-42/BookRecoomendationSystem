@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Book Recommender System</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> 
+    </head>
+
+    <style>
+        .text-white{
+            color:white
+        }
+    </style>
+    <body style="background-color:#4e3f3f">
+        <nav class="navbar" style="background-color:#0b0c0c">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Home</a></li>
+                <li><a href="/recommend">Recommend</a></li>
+            </ul>
+        </nav>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="text-white" style="font-size:50 px">Recommend Books</h1>
+                    <form action="/recommend_books" method="post">
+                        <input name="user_input" type = "text" class = "form-control" placeholder="type the movie name"> <br>
+                        <input type = "submit" class = "btn btn-lg btn-warning">
+                    </form>
+                </div>
+                    
+                {% if data %} <!-- Checking whether recommendations are available or not -->
+                    <div>
+                        <h style="font-size: 50px; color: aliceblue; padding-left: 250px;"> Top Recommended Books</h>
+                    </div>
+                    {% for i in data %} <!-- Looping for x no of times , where x is number of recommendations-->
+                        <div class="col-md-3" style="margin-top:50px">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img class="card-img-top" src="{{i[2]}}">
+                                    <br>
+                                    <p class="text-white"><u>Book-Title:</u>   {{i[0]}}</p>
+                                    <p class="text-white"><u>Book-Author:</u>   {{i[1]}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                
+                {% else %}
+                    <div>
+                        <h style="font-size: 50px; color: aliceblue; padding-left: 280px;"> Sorry, no books found !</h>
+                    </div> 
+                {% endif %}
+                    
+            </div>
+        </div>
+    </body>
+</html>
